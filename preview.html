@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Little Oven Atelier 🍞</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="light">
+
+<!-- LANDING -->
+<section id="landing" class="fade-in">
+  <h1>Little Oven Atelier 🍞</h1>
+
+  <div class="menu">
+    <button onclick="enterSite('Adoptable Shelf')">Enter Bakery</button>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div id="main" class="hidden">
+
+  <header class="slide-down">
+    <h2>Little Oven Atelier 🍞</h2>
+    <button onclick="toggleDark()">🌙</button>
+  </header>
+
+  <div class="layout">
+
+    <aside class="slide-left">
+      <button onclick="setTab('Adoptable Shelf')">Adoptable Shelf</button>
+      <button onclick="setTab('Meet the Baker')">Meet the Baker</button>
+    </aside>
+
+    <main id="content">
+
+      <!-- CATEGORY -->
+      <div id="categoryBar" class="category slide-down">
+        <div id="categoryScroll" class="category-scroll">
+          <button onclick="scrollToSection('strawberry')">🍓 Strawberry</button>
+          <button onclick="scrollToSection('matcha')">🍵 Matcha</button>
+          <button onclick="scrollToSection('choco')">🍫 Chocolate</button>
+        </div>
+
+        <button id="collapseBtn" onclick="expandCategory()">🍓 Flavors ▾</button>
+      </div>
+
+      <!-- SECTION -->
+      <section id="strawberry" class="fade-up">
+        <h2>🍓 Strawberry</h2>
+        <div class="grid">
+          <div class="card"></div>
+          <div class="card"></div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
