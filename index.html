@@ -1,58 +1,82 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Little Oven Atelier 🍞</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="light">
 
-<!-- LANDING -->
-<section id="landing" class="fade-in">
+<!-- ===== LANDING ===== -->
+<section id="landing">
   <h1>Little Oven Atelier 🍞</h1>
 
   <div class="menu">
-    <button onclick="enterSite('Adoptable Shelf')">Enter Bakery</button>
+    <button onclick="enterSite('Freshly Baked Illustrations')">Freshly Baked Illustrations</button>
+    <button onclick="enterSite('Commission Menu')">Commission Menu</button>
+    <button onclick="enterSite('Adoptable Shelf')">Adoptable Shelf</button>
+    <button onclick="enterSite('Meet the Baker')">Meet the Baker</button>
   </div>
+
+  <button class="dark-toggle" onclick="toggleDark()">🌙</button>
 </section>
 
-<!-- MAIN -->
+<!-- ===== MAIN ===== -->
 <div id="main" class="hidden">
 
-  <header class="slide-down">
-    <h2>Little Oven Atelier 🍞</h2>
+  <!-- HEADER -->
+  <header>
+    <h1>Little Oven Atelier 🍞</h1>
     <button onclick="toggleDark()">🌙</button>
   </header>
 
-  <div class="layout">
+  <div class="container">
 
-    <aside class="slide-left">
+    <!-- SIDEBAR -->
+    <aside>
+      <button onclick="setTab('Freshly Baked Illustrations')">Freshly Baked Illustrations</button>
+      <button onclick="setTab('Commission Menu')">Commission Menu</button>
       <button onclick="setTab('Adoptable Shelf')">Adoptable Shelf</button>
       <button onclick="setTab('Meet the Baker')">Meet the Baker</button>
     </aside>
 
+    <!-- CONTENT -->
     <main id="content">
 
-      <!-- CATEGORY -->
-      <div id="categoryBar" class="category slide-down">
-        <div id="categoryScroll" class="category-scroll">
+      <!-- CATEGORY BAR -->
+      <div id="categoryBar" class="category">
+        <div class="category-scroll" id="categoryScroll">
           <button onclick="scrollToSection('strawberry')">🍓 Strawberry</button>
           <button onclick="scrollToSection('matcha')">🍵 Matcha</button>
-          <button onclick="scrollToSection('choco')">🍫 Chocolate</button>
+          <button onclick="scrollToSection('chocolate')">🍫 Chocolate</button>
+          <button onclick="scrollToSection('seasonal')">🎄 Seasonal</button>
         </div>
 
         <button id="collapseBtn" onclick="expandCategory()">🍓 Flavors ▾</button>
       </div>
 
-      <!-- SECTION -->
-      <section id="strawberry" class="fade-up">
-        <h2>🍓 Strawberry</h2>
-        <div class="grid">
-          <div class="card"></div>
-          <div class="card"></div>
-        </div>
-      </section>
+      <!-- SECTIONS -->
+      <div id="sections">
+        <section id="strawberry">
+          <h2>🍓 Strawberry</h2>
+          <div class="grid">
+            <div class="card"></div>
+            <div class="card"></div>
+          </div>
+        </section>
+
+        <section id="matcha">
+          <h2>🍵 Matcha</h2>
+          <div class="grid">
+            <div class="card"></div>
+            <div class="card"></div>
+          </div>
+        </section>
+
+      </div>
 
     </main>
 
