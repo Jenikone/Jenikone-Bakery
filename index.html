@@ -8,42 +8,41 @@
 
 <body>
 
-<!-- SOUND -->
 <audio id="slideSound" src="assets/slide.mp3"></audio>
 
-<!-- HEADER (mái ngói) -->
 <div class="roof"></div>
 
 <div class="layout">
 
-  <!-- SIDEBAR -->
   <aside>
-    <button onclick="switchTab()">Fresh</button>
-    <button onclick="switchTab()">Commission</button>
-    <button class="active">Adoptable</button>
-    <button onclick="switchTab()">About</button>
+    <button onclick="switchTab(event)">Fresh</button>
+    <button onclick="switchTab(event)">Commission</button>
+    <button onclick="switchTab(event)" class="active">Adoptable</button>
+    <button onclick="switchTab(event)">About</button>
   </aside>
 
-  <!-- MAIN -->
   <main>
 
-    <!-- CURTAIN -->
     <div class="curtain-container">
       <div class="curtain-track" id="track"></div>
     </div>
 
-    <!-- GRID -->
-    <div class="grid">
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
+    <div id="content-area">
+      <div class="grid" id="adoptableGrid">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+      </div>
     </div>
 
   </main>
 
-</div>
+</div> <!-- ⭐ QUAN TRỌNG -->
 
 <script src="script.js"></script>
+
 </body>
 </html>
