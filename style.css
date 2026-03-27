@@ -20,31 +20,36 @@ body {
 /* SIDEBAR FIXED */
 aside {
   width: 220px;
-  height: 100vh;
+  height: calc(100vh - 120px); /* trừ mái */
   position: fixed;
-  top: 0;
+  top: 120px; /* ⭐ nằm dưới mái */
   left: 0;
 
   background: rgba(200, 220, 200, 0.7);
   padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* MAIN lệch sang phải */
 main {
-  margin-left: 220px;
-  padding: 20px;
+  margin-left: 240px; /* rộng hơn sidebar 1 chút */
+  padding: 140px 30px 30px; /* ⭐ đẩy xuống khỏi mái */
 }
 /* ===== CURTAIN ===== */
 .curtain-container {
   overflow: hidden;
   width: 100%;
+  margin-bottom: 30px;
 }
 
 .curtain-track {
   display: flex;
   gap: 12px;
 
-  max-width: 100%;
+  will-change: transform; /* mượt animation */
 }
 /* ITEM */
 .curtain-item {
@@ -59,33 +64,38 @@ main {
   justify-content: center;
 
   font-size: 20px;
+  color: #3b2b20;
+  font-weight: 600;
 
   transition: all 0.8s cubic-bezier(.22,1,.36,1);
 }
 
-/* THU NHỎ */
+/* thu nhỏ giống rèm gấp */
 .curtain-item.collapsed {
   min-width: 70px;
   transform: scaleX(0.6);
   opacity: 0.7;
-  filter: brightness(0.9);
 }
 
 /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* ⭐ 3 cột */
   gap: 20px;
 }
 
 .card {
-  height: 200px;
+  aspect-ratio: 3 / 5; /* ⭐ đúng tỉ lệ art */
   background: rgba(255,255,255,0.6);
   border-radius: 20px;
   backdrop-filter: blur(4px);
+
   transition: 0.4s;
 }
 
 .card:hover {
   transform: scale(1.05);
+}
+html, body {
+  overflow-x: hidden;
 }
