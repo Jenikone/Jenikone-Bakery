@@ -14,31 +14,25 @@ body {
 /* LAYOUT */
 .layout {
   display: flex;
-  height: calc(100vh - 120px);
 }
 
-/* SIDEBAR */
+/* SIDEBAR FIXED */
 aside {
   width: 220px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
   background: rgba(200, 220, 200, 0.7);
   padding: 20px;
-  backdrop-filter: blur(6px);
-}
-aside button {
-  display: block;
-  margin-bottom: 10px;
-}
-aside .active {
-  background: #c48a5a;
-  color: white;
 }
 
-/* MAIN */
+/* MAIN lệch sang phải */
 main {
-  flex: 1;
+  margin-left: 220px;
   padding: 20px;
 }
-
 /* ===== CURTAIN ===== */
 .curtain-container {
   overflow: hidden;
@@ -48,9 +42,10 @@ main {
 .curtain-track {
   display: flex;
   gap: 12px;
+
+  overflow: hidden; 
   transition: transform 0.8s cubic-bezier(.22,1,.36,1);
 }
-
 /* ITEM */
 .curtain-item {
   min-width: 220px;
