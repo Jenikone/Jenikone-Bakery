@@ -8,7 +8,8 @@ body {
 .roof {
   height: 120px;
   background: url("assets/curtain.png") repeat-x center;
-  background-size: contain;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 /* LAYOUT */
@@ -36,15 +37,14 @@ main {
 /* ===== CURTAIN ===== */
 .curtain-container {
   overflow: hidden;
-  margin-bottom: 30px;
+  width: 100%;
 }
 
 .curtain-track {
   display: flex;
   gap: 12px;
 
-  overflow: hidden; 
-  transition: transform 0.8s cubic-bezier(.22,1,.36,1);
+  max-width: 100%;
 }
 /* ITEM */
 .curtain-item {
