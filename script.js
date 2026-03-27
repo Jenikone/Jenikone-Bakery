@@ -1,5 +1,5 @@
 const track = document.getElementById("track");
-const sound = document.getElementById("slideSound");
+const grid = document.getElementById("adoptableGrid");
 
 const categories = [
   "🍓 Strawberry",
@@ -10,62 +10,81 @@ const categories = [
   "🍰 Limited"
 ];
 
-// Tạo item
+let currentIndex = 4;
+
+// tạo item
 function createItem(text) {
   const div = document.createElement("div");
   div.className = "curtain-item";
   div.textContent = text;
+
+  // hover → phóng to lại
+  div.addEventListener("mouseenter", () => {
+    div.classList.remove("collapsed");
+  });
+
+  div.addEventListener("mouseleave", () => {
+    if (div.dataset.collapsed === "true") {
+      div.classList.add("collapsed");
+    }
+  });
+
   return div;
 }
 
 // INIT
-categories.slice(0,4).forEach(c => {
-  track.appendChild(createItem(c));
-});
+function initCurtain() {
+  track.innerHTML = "";
+  currentIndex = 4;
 
-// SHIFT RÈM
+  categories.slice(0, 4).forEach(c => {
+    track.appendChild(createItem(c));
+  });
+}
+
+initCurtain();
+
+// SHIFT RÈM (giới hạn 6 item)
 function shiftRight() {
   const items = document.querySelectorAll(".curtain-item");
 
-  if (!items.length) return;
+  if (items.length >= 6) return; // ⭐ giới hạn
 
-  // A thu nhỏ
-  items[0].classList.add("collapsed");
+  const first = items[0];
+  first.classList.add("collapsed");
+  first.dataset.collapsed = "true";
 
-  // thêm item mới
-  const newItem = createItem(
-    categories[Math.floor(Math.random() * categories.length)]
-  );
-
+  const newItem = createItem(categories[currentIndex]);
   track.appendChild(newItem);
 
-  // phát sound
-  if (sound) {
-    sound.currentTime = 0;
-    sound.play().catch(()=>{});
-  }
+  currentIndex++;
 }
 
-// HOVER → kéo rèm
+// hover kéo
 track.addEventListener("mousemove", (e) => {
   const rect = track.getBoundingClientRect();
   const x = e.clientX - rect.left;
 
-  if (x > rect.width - 120) {
+  if (x > rect.width - 100) {
     shiftRight();
   }
 });
 
-// SWITCH TAB → đóng rèm
-function switchTab() {
-  track.style.transform = "translateY(-120%)";
+// SWITCH TAB
+function switchTab(e) {
+  document.querySelectorAll("aside button").forEach(btn => {
+    btn.classList.remove("active");
+  });
 
-  setTimeout(() => {
-    track.innerHTML = "";
-    categories.slice(0,4).forEach(c => {
-      track.appendChild(createItem(c));
-    });
+  if (e) e.target.classList.add("active");
 
-    track.style.transform = "translateY(0)";
-  }, 500);
+  // reset curtain
+  initCurtain();
+
+  // hiện grid nếu adoptable
+  if (e && e.target.textContent.includes("Adoptable")) {
+    grid.classList.remove("hidden");
+  } else {
+    grid.classList.add("hidden");
+  }
 }
